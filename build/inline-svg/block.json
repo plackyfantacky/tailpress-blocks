@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "tailpress/inline-svg",
+  "version": "0.1.0",
+  "title": "Inline SVG",
+  "category": "tailpress-blocks",
+  "icon": "art",
+  "description": "An inline SVG image",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "script": "file:./inline-svg.js",
+  "render": "file:./inline-svg.php",
+  "attributes": {
+    "mediaId": {
+      "type": "number",
+      "default": 0
+    },
+    "mediaUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "svgClasses": {
+      "type": "string",
+      "default": ""
+    },
+    "linkURL": {
+      "type": "string",
+      "default": ""
+    },
+    "linkClasses": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}

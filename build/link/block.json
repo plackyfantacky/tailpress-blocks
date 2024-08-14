@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "tailpress-blocks/link",
+  "version": "0.1.0",
+  "title": "Link",
+  "category": "tailpress-blocks",
+  "icon": "admin-links",
+  "description": "",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "script": "file:./link.js",
+  "attributes": {
+    "url": {
+      "type": "string"
+    },
+    "target": {
+      "type": "string"
+    },
+    "classNames": {
+      "type": "string"
+    }
+  }
+}
