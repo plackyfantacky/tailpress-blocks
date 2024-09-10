@@ -3,6 +3,7 @@ import { InspectorControls, MediaUpload, MediaUploadCheck } from '@wordpress/blo
 import { Fragment } from '@wordpress/element';
 import ServerSideRender from '@wordpress/server-side-render';
 import { Button, Panel, PanelBody, PanelRow } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
 
 import metadata from './block.json';
 
@@ -10,8 +11,8 @@ registerBlockType(metadata.name, {
     ...metadata,
 	edit(props) {
         const { attributes, setAttributes } = props;
-        
-        const onSelectMedia = (media) => {	
+
+        const onSelectMedia = (media) => {
 			setAttributes({
 				mediaId: media.id,
 				mediaUrl: media.url,
@@ -46,12 +47,12 @@ registerBlockType(metadata.name, {
                 svgClasses: classes
             });
         }
-   
+
         return (
             <Fragment>
                 <InspectorControls>
-                    <Panel header="Inline SVG">
-                        <PanelBody title={'SVG Image'} initialOpen={true} >
+                    <Panel header={__("Inline SVG", metadata.textdomain)}>
+                        <PanelBody title={__('SVG Image', metadata.textdomain)} initialOpen={true} >
                             <PanelRow>
                                 <div className="editor-post-featured-image  border border-dashed border-black">
                                 <MediaUploadCheck>
@@ -64,8 +65,8 @@ registerBlockType(metadata.name, {
                                                 className={attributes.mediaId == 0 ? 'editor-post-featured-image__toggle' : 'editor-post-featured-image__preview'}
                                                 onClick={open}
                                             >
-                                                {attributes.mediaId == 0 && 'Choose an image'}
-                                                {attributes.mediaUrl != undefined && 
+                                                {attributes.mediaId == 0 && __('Choose an image', metadata.textdomain)}
+                                                {attributes.mediaUrl != undefined &&
                                                     <Fragment>
                                                         <img src={ attributes.mediaUrl } />
                                                     </Fragment>
@@ -77,41 +78,41 @@ registerBlockType(metadata.name, {
                                 {attributes.mediaId != 0 &&
                                     <MediaUploadCheck>
                                         <MediaUpload
-                                            title={'Replace image'}
+                                            title={__('Replace image', metadata.textdomain)}
                                             value={attributes.mediaId}
                                             onSelect={onSelectMedia}
                                             allowedTypes={['image']}
                                             render={({open}) => (
-                                                <Button onClick={open}>Replace image</Button>
+                                                <Button onClick={open}>{__("Replace image", metadata.textdomain)}</Button>
                                             )}
                                         />
                                     </MediaUploadCheck>
                                 }
                                 {attributes.mediaId != 0 &&
                                     <MediaUploadCheck>
-                                        <Button onClick={removeMedia} isDestructive>Remove image</Button>
+                                        <Button onClick={removeMedia} isDestructive>{__("Remove image", metadata.textdomain)}</Button>
                                     </MediaUploadCheck>
                                 }
                                 </div>
                             </PanelRow>
                             <PanelRow className="items-start flex-col gap-y-2">
-                                <label>SVG Classes</label>
+                                <label>{__("SVG Classes", metadata.textdomain)}</label>
                                 <input type="text" value={ attributes.svgClasses } onChange={ (e) => updateSVGClasses(e.target.value) } />
                             </PanelRow>
                         </PanelBody>
-                        <PanelBody title={'Link/URL'}>
+                        <PanelBody title={__('Link/URL', metadata.textdomain)}>
                             <PanelRow className="items-start flex-col gap-y-2">
-                                <label>Link URL</label>
+                                <label>{__("Link URL", metadata.textdomain)}</label>
                                 <input type="text" value={ attributes.linkURL } onChange={ (e) => updateLinkURL(e.target.value) } />
                             </PanelRow>
                             <PanelRow className="items-start flex-col gap-y-2">
-                                <label>Link Classes</label>
+                                <label>{__("Link Classes", metadata.textdomain)}</label>
                                 <input type="text" value={ attributes.linkClasses } onChange={ (e) => updateLinkClasses(e.target.value) } />
                             </PanelRow>
                         </PanelBody>
                     </Panel>
                 </InspectorControls>
-                <ServerSideRender block={ 'tailpress/inline-svg' } attributes={ attributes } className="relative h-max" />
+                <ServerSideRender block={ 'tailpress-blocks/inline-svg' } attributes={ attributes } className="relative h-max" />
             </Fragment>
         );
     },
