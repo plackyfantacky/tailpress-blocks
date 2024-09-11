@@ -1,7 +1,7 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { InnerBlocks, useBlockProps, InspectorControls  } from '@wordpress/block-editor';
 import { PanelBody, PanelRow, TextControl } from '@wordpress/components';
-
+import { __ } from '@wordpress/i18n';
 import metadata from './block.json';
 
 registerBlockType( metadata.name, {
@@ -35,24 +35,24 @@ registerBlockType( metadata.name, {
         return (
             <>
                 <InspectorControls>
-                    <PanelBody title="Link Settings">
+                    <PanelBody title={__("Link Settings", metadata.textdomain)}>
                         <PanelRow>
                             <TextControl
-                                label="URL"
+                                label={__("URL", metadata.textdomain)}
                                 value={url}
                                 onChange={val => handleUrlChange(val)}
                             />
                         </PanelRow>
                         <PanelRow>
                             <TextControl
-                                label="Target"
+                                label={__("Link target", metadata.textdomain)}
                                 value={target}
                                 onChange={val => handleTargetChange(val)}
                             />
                         </PanelRow>
                         <PanelRow>
                             <TextControl
-                                label="Link tag class names"
+                                label={__("Link tag class names", metadata.textdomain)}
                                 value={classNames}
                                 onChange={val => handleClassNamesChange(val)}
                             />

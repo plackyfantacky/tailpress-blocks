@@ -6,11 +6,12 @@
 	"title": "Link",
 	"category": "tailpress-blocks",
 	"icon": "admin-links",
-	"description": "",
+	"description": "A simple link to wrap other blocks",
 	"example": {},
 	"supports": {
 		"html": false
 	},
+	"textdomain": "tailpress-blocks",
 	"script": "file:./link.js",
 	"attributes": {
 		"url": {
