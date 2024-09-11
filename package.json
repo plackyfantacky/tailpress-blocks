@@ -12,9 +12,32 @@
 		"lint:js": "wp-scripts lint-js",
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip",
-		"start": "wp-scripts start"
+		"start": "wp-scripts start",
+		"shared:build": "node .esbuild/build.config.mjs",
+		"shared:watch": "node .esbuild/watch.config.mjs --watch",
+		"shared:dev": "node .esbuild/dev.config.mjs",
+		"build:code:css": "npx postcss -o ./shared/dist/block-code.css ./shared/src/block-code.css --env production",
+		"dev:code:css": "npx postcss -o ./shared/dist/block-code.css ./shared/src/block-code.css --env development",
+		"watch:code:css": "npx postcss -o ./shared/dist/block-code.css ./shared/src/block-code.css --watch",
+		"watch:code": "concurrently \"npm run watch:code:css\" \"npm run shared:watch\""
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^27.9.0"
+		"@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
+		"@wordpress/scripts": "^29.0.0",
+		"autoprefixer": "^10.4.20",
+		"concurrently": "^9.0.0",
+		"css-loader": "^7.1.2",
+		"cssnano": "^7.0.6",
+		"esbuild": "^0.23.1",
+		"mini-css-extract-plugin": "^2.9.1",
+		"postcss": "^8.4.45",
+		"postcss-cli": "^11.0.0",
+		"postcss-import": "^16.1.0",
+		"postcss-nesting": "^13.0.0",
+		"resolve-url-loader": "^5.0.0",
+		"tailwindcss": "^3.4.10"
+	},
+	"dependencies": {
+		"highlight.js": "^11.10.0"
 	}
 }
