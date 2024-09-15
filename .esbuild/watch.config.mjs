@@ -5,7 +5,8 @@ let ctx
 try {
     ctx = await esbuild.context({
         entryPoints: [
-            { out: 'shared/dist/block-code', in: 'shared/src/block-code.js' },
+            { out: 'build2/shared/block-code', in: 'src/shared/block-code.js' },
+
         ],
         bundle: true,
         outdir: './',
@@ -14,6 +15,7 @@ try {
         sourcemap: true,
         logLevel: 'info',
         plugins: [],
+		loader: { '.js': 'jsx' },
     })
     await ctx.watch()
     console.log('watching...')

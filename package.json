@@ -16,9 +16,9 @@
 		"shared:build": "node .esbuild/build.config.mjs",
 		"shared:watch": "node .esbuild/watch.config.mjs --watch",
 		"shared:dev": "node .esbuild/dev.config.mjs",
-		"build:code:css": "npx postcss -o ./shared/dist/block-code.css ./shared/src/block-code.css --env production",
-		"dev:code:css": "npx postcss -o ./shared/dist/block-code.css ./shared/src/block-code.css --env development",
-		"watch:code:css": "npx postcss -o ./shared/dist/block-code.css ./shared/src/block-code.css --watch",
+		"build:code:css": "npx postcss -o ./build2/shared/block-code.css ./src/shared/block-code.css --env production",
+		"dev:code:css": "npx postcss -o ./build2/shared/block-code.css ./src/shared/block-code.css --env development",
+		"watch:code:css": "npx postcss -o ./build2/shared/block-code.css ./src/shared/block-code.css --watch",
 		"watch:code": "concurrently \"npm run watch:code:css\" \"npm run shared:watch\""
 	},
 	"devDependencies": {
@@ -33,11 +33,15 @@
 		"postcss": "^8.4.45",
 		"postcss-cli": "^11.0.0",
 		"postcss-import": "^16.1.0",
+		"postcss-loader": "^8.1.1",
 		"postcss-nesting": "^13.0.0",
 		"resolve-url-loader": "^5.0.0",
 		"tailwindcss": "^3.4.10"
 	},
 	"dependencies": {
+		"@wordpress/edit-post": "^8.7.0",
+		"@wordpress/i18n": "^5.7.0",
+		"@wordpress/plugins": "^7.7.0",
 		"highlight.js": "^11.10.0"
 	}
 }

@@ -2,7 +2,7 @@ import esbuild from 'esbuild'
 
 await esbuild.build({
     entryPoints: [
-        { out: 'shared/dist/block-code', in: 'shared/src/block-code.js' },
+        { out: 'build2/shared/block-code', in: 'src/shared/block-code.js' },
     ],
     bundle: true,
     outdir: './',
@@ -11,4 +11,5 @@ await esbuild.build({
     sourcemap: false,
     logLevel: 'info',
     plugins: [],
+	loader: { '.js': 'jsx' },
 })
